@@ -29,7 +29,7 @@ export default class ActivityFeed extends Component {
     })
     .then(entries => {
       this.setState({
-        entries: entries.data.reverse()
+        entries: entries.data
       });
     })
   }
@@ -38,7 +38,7 @@ export default class ActivityFeed extends Component {
     var current = moment().startOf('day');
     var count = 0;
     var counting = true;
-    this.state.entries.slice().reverse().forEach(entry => {
+    this.state.entries.forEach(entry => {
       if (counting === true && current.format('LLLL') === moment(entry.datetime).startOf('day').format('LLLL')) {
         count++
       } else {
